@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#fff1f5">
+  <title>For Arshi, My Baby 💓</title>
+  <style>
+    :root {
+      --pink: #f7a8bd;
+      --rose: #d94f78;
+      --ink: #543541;
+      --cream: #fff8f7;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; min-height: 100vh; color: var(--ink);
+      font-family: Georgia, "Times New Roman", serif;
+      background:
+        radial-gradient(circle at 12% 15%, #ffe0e9 0 2px, transparent 3px),
+        radial-gradient(circle at 85% 24%, #ffd7e2 0 3px, transparent 4px),
+        linear-gradient(145deg, #fff7f7, #ffeaf0 55%, #fff8f2);
+      background-size: 120px 120px, 160px 160px, auto;
+      display: grid; place-items: center; padding: 28px 16px;
+      overflow-x: hidden;
+    }
+    .card {
+      width: min(100%, 680px); position: relative; text-align: center;
+      padding: clamp(28px, 7vw, 58px) clamp(20px, 6vw, 52px);
+      border: 1px solid rgba(217,79,120,.18); border-radius: 28px;
+      background: rgba(255,255,255,.82);
+      box-shadow: 0 22px 70px rgba(145,65,91,.13);
+      backdrop-filter: blur(8px);
+    }
+    .heart { font-size: 46px; display: inline-block; animation: beat 1.4s infinite; }
+    h1 { font-size: clamp(2.3rem, 8vw, 4.1rem); line-height: 1.05; margin: 12px 0; color: #bd416b; }
+    .subtitle { font-size: 1.15rem; color: #986273; margin: 0 0 28px; }
+    .message {
+      font-size: clamp(1.08rem, 3vw, 1.25rem); line-height: 1.85;
+      text-align: left; margin: 0 auto; max-width: 540px;
+    }
+    .message p { margin: 0 0 16px; }
+    .promise {
+      margin: 28px auto; padding: 18px 20px; max-width: 520px;
+      border-left: 3px solid var(--pink); border-radius: 0 14px 14px 0;
+      background: #fff2f5; font-style: italic; line-height: 1.7;
+    }
+    button {
+      border: 0; border-radius: 999px; padding: 14px 25px;
+      color: white; background: linear-gradient(110deg, #e66b91, #c94a73);
+      font: 600 1rem Arial, sans-serif; cursor: pointer;
+      box-shadow: 0 8px 20px rgba(201,74,115,.22);
+      transition: transform .2s, box-shadow .2s;
+    }
+    button:hover { transform: translateY(-2px); box-shadow: 0 11px 25px rgba(201,74,115,.3); }
+    button:focus-visible { outline: 3px solid #8d3152; outline-offset: 4px; }
+    #note { min-height: 28px; margin: 18px 0 0; color: #a33d63; font-style: italic; }
+    .signature { margin-top: 30px; font-size: 1.15rem; color: #bd416b; }
+    .tiny { margin-top: 22px; color: #a27b87; font: .8rem Arial, sans-serif; }
+    .floating { position: fixed; pointer-events: none; opacity: .6; animation: float 8s linear infinite; }
+    @keyframes beat { 0%,100% { transform: scale(1); } 15% { transform: scale(1.16); } 30% { transform: scale(1); } }
+    @keyframes float { from { transform: translateY(105vh) rotate(0); } to { transform: translateY(-12vh) rotate(35deg); } }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
+    }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <div class="heart" aria-hidden="true">💓</div>
+    <p class="subtitle">A little note from my heart</p>
+    <h1>Arshi, My Baby</h1>
+
+    <section class="message">
+      <p>Hey Arshi,</p>
+      <p>I’m sorry about what happened. When you hung up, I should have called you back and tried to understand what you were feeling. Instead, I let a misunderstanding and my silence make things worse.</p>
+      <p>I’m not saying this to make excuses. I should have communicated better, and I’m genuinely sorry if I made you feel unheard or unimportant.</p>
+      <p>You mean so much to me. I don’t want a misunderstanding to come between us. Whenever you feel ready, I’d really like to listen, understand your side, and talk things through calmly.</p>
+    </section>
+
+    <div class="promise">
+      I can’t promise we’ll never misunderstand each other, but I can promise to try harder to listen, communicate, and not let silence speak for me. ❤️
+    </div>
+
+    <button type="button" id="surprise">A tiny reminder for you 💌</button>
+    <p id="note" aria-live="polite"></p>
+
+    <p class="signature">I care about you, Arshi. Always. 💗</p>
+    <p class="tiny">No pressure to reply right away. Take your time.</p>
+  </main>
+
+  <script>
+    const messages = [
+      "You are loved, Arshi. More than this little webpage can say. 💓",
+      "Your feelings matter to me, and I want to hear them. 🌷",
+      "One misunderstanding doesn't change how much you mean to me. ❤️",
+      "Whenever you're ready, I'm here to listen. 💌"
+    ];
+    let index = 0;
+    document.getElementById("surprise").addEventListener("click", () => {
+      document.getElementById("note").textContent = messages[index % messages.length];
+      index++;
+    });
+
+    // Small floating hearts; decorative only.
+    for (let i = 0; i < 9; i++) {
+      const heart = document.createElement("span");
+      heart.className = "floating";
+      heart.textContent = ["♡", "💗", "♥"][i % 3];
+      heart.style.left = (5 + i * 11) + "%";
+      heart.style.animationDelay = (i * -0.9) + "s";
+      heart.style.animationDuration = (7 + (i % 4)) + "s";
+      heart.style.fontSize = (16 + (i % 3) * 8) + "px";
+      document.body.appendChild(heart);
+    }
+  </script>
+</body>
+</html>
